@@ -48,7 +48,6 @@ class FoodPost(models.Model):
     video = models.FileField(upload_to='products_videos/', validators=[FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov', 'mkv'])])
     category = models.ForeignKey(to=CategoryFood, on_delete=models.CASCADE)
     maxsulotlar = models.TextField()
-    like = models.ForeignKey(to=User, on_delete=models.CASCADE)
     def __str__(self):
         return self.nomi
 
@@ -59,11 +58,42 @@ class CommentModel(models.Model):
     izox = models.TextField()
     def __str__(self):
         return self.user
+    
+
 class CommentReply(models.Model):
     reply = models.ForeignKey(to=CommentModel, on_delete=models.CASCADE)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     izoh = models.TextField()
     def __str__(self):
         return self.user
+    
+
+class like(models.Model):
+    food = models.ForeignKey(to=FoodPost, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+class Waiter(models.Model):
+    name = models.CharField(max_length=35)
+    username = models.CharField(max_length=25)
+    parol = models.CharField(max_length=50)
+    tel = models.PositiveBigIntegerField()
+
+
+class Savat(models.Model):
+    name = models.ForeignKey(to=FoodPost, on_delete=models.CASCADE)
+    created_time = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField()
+
+class Karzinka(models.Model):
+    name = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    narxi = models.BigIntegerField()
+    soni = models.BigIntegerField()
+    created_time = models.DateTimeField(auto_now_add=True)
+
+
+
+
+
 
 

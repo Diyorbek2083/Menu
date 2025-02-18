@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
-from .views import UserViewSet
+from .views import UserView
 from .documentation import schema_view
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'users', UserViewSet, basename='users')
+router.register(r'users', UserView, basename='users')
+
 
 
 urlpatterns = [

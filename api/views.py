@@ -2,12 +2,13 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from .permissions import IsAdminOnly
 from django.contrib.auth.models import User
-from .serializers import ModelSelializer
+from .serializers import *
 
 
 
 
-class UserViewSet(ModelViewSet):
+class UserView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = User.objects.all()
-    serializer_class = ModelSelializer
+    serializer_class = UserSerializer
+
