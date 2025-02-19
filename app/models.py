@@ -53,7 +53,7 @@ class FoodPost(models.Model):
 
 
 class CommentModel(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.CharField(max_length=30)
     product = models.ForeignKey(to=FoodPost, on_delete=models.CASCADE)
     izox = models.TextField()
     def __str__(self):
@@ -62,33 +62,44 @@ class CommentModel(models.Model):
 
 class CommentReply(models.Model):
     reply = models.ForeignKey(to=CommentModel, on_delete=models.CASCADE)
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.CharField(max_length=30)
     izoh = models.TextField()
+    
     def __str__(self):
         return self.user
     
 
 class like(models.Model):
     food = models.ForeignKey(to=FoodPost, on_delete=models.CASCADE)
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.CharField(max_length=30)
+    creat_time = models.DateTimeField(auto_now_add=True)
+
+
 
 
 class Waiter(models.Model):
     name = models.CharField(max_length=35)
-    username = models.CharField(max_length=25)
+    familya = models.CharField(max_length=35)
     parol = models.CharField(max_length=50)
     tel = models.PositiveBigIntegerField()
+    create_time = models.DateTimeField(auto_now_add=True)
 
 
 class Savat(models.Model):
-    name = models.ForeignKey(to=FoodPost, on_delete=models.CASCADE)
+    user = models.CharField(max_length=40)
+    name = models.CharField(max_length=100)
+    narxi = models.CharField(max_length=50)
+    soni = models.IntegerField()
+    stol_soni = models.IntegerField()
     created_time = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField()
 
 class Karzinka(models.Model):
-    name = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    narxi = models.BigIntegerField()
-    soni = models.BigIntegerField()
+    user = models.CharField(max_length=40)
+    name = models.CharField(max_length=100)
+    narxi = models.CharField(max_length=50)
+    soni = models.IntegerField()
+    stol_soni = models.IntegerField()
     created_time = models.DateTimeField(auto_now_add=True)
 
 
