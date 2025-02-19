@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
+
+
 class Room(models.Model):
     nomi = models.CharField(max_length=25)
     created_time = models.DateTimeField(auto_now_add=True)
@@ -85,7 +87,6 @@ class Waiter(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     kun = models.IntegerField()
 
-<<<<<<< HEAD
 class UserModels(models.Model):
     name = models.CharField(max_length=25)
     familiya = models.CharField(max_length=25)
@@ -93,7 +94,6 @@ class UserModels(models.Model):
     parol = models.CharField(max_length=30)
     zakaz_soni = models.IntegerField()
     zaqaz_pul = models.BigIntegerField()
-=======
 
 
 
@@ -103,7 +103,6 @@ class Savat(models.Model):
     narxi = models.CharField(max_length=50)
     soni = models.IntegerField()
     stol_soni = models.IntegerField()
->>>>>>> 8b96930 (l)
     created_time = models.DateTimeField(auto_now_add=True)
 
 
