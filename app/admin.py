@@ -1,4 +1,14 @@
 from django.contrib import admin
-from .models import *
-admin.site.register(Room)
-admin.site.register(TablesModel)
+from . import models
+
+admin.site.register(models.RoomModels)
+admin.site.register(models.FoodModels)
+admin.site.register(models.TablesModels)
+admin.site.register(models.WaiterModels)
+admin.site.register(models.FoodCategoryaModels)
+admin.site.register(models.CommentModel)
+admin.site.register(models.ReplayCommentModels)
+admin.site.register(models.LikeMolels)
+admin.site.register(models.KarzinkaModels)
+admin.site.register(models.DoimiyKarzinkaModels)
+admin.site.register(models.UserModels)
