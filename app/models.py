@@ -27,7 +27,7 @@ class TablesModel(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status_Choice = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    objects = models.Manager()
+    objects = models.Manager()  
     published = PublishManeger()
     bandligi = models.BooleanField()
     qr_code = models.ImageField(upload_to='QR_Code/')
@@ -83,9 +83,19 @@ class Waiter(models.Model):
     parol = models.CharField(max_length=50)
     tel = models.PositiveBigIntegerField()
     create_time = models.DateTimeField(auto_now_add=True)
+    kun = models.IntegerField()
+
+class UserModels(models.Model):
+    name = models.CharField(max_length=25)
+    familiya = models.CharField(max_length=25)
+    tel = models.IntegerField()
+    parol = models.CharField(max_length=30)
+    zakaz_soni = models.IntegerField()
+    zaqaz_pul = models.BigIntegerField()
+    created_time = models.DateTimeField(auto_now_add=True)
 
 
-class Savat(models.Model):
+class Karzinka(models.Model):
     user = models.CharField(max_length=40)
     name = models.CharField(max_length=100)
     narxi = models.CharField(max_length=50)
@@ -94,7 +104,7 @@ class Savat(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField()
 
-class Karzinka(models.Model):
+class Doimiy_karzinka(models.Model):
     user = models.CharField(max_length=40)
     name = models.CharField(max_length=100)
     narxi = models.CharField(max_length=50)
