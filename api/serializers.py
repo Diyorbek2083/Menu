@@ -53,3 +53,10 @@ class DoimiyKarzinkaSerializer(serializers.ModelSerializer):
     class Meta:
         model = DoimiyKarzinkaModels
         fields = '__all__'
+
+
+
+
+
+
+        
