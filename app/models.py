@@ -24,13 +24,14 @@ class TableModels(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published')
     )
-    raqam = models.BigIntegerField(unique=True)  # Stol raqami
-    xona = models.ForeignKey(RoomModels, on_delete=models.CASCADE)  # Xona bilan bog‘lanish
+    raqam = models.BigIntegerField(unique=True)
+    nomi = models.CharField(max_length=30)
+    xona = models.ForeignKey(RoomModels, on_delete=models.CASCADE)
     created_time = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status_Choice = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     bandligi = models.BooleanField(default=False)
-    qr_code = models.ImageField(upload_to='QR_Code/', blank=True, null=True)  # QR kod fayli
+    qr_code = models.ImageField(upload_to='QR_Code/', blank=True, null=True)
     
     def __str__(self):
         return f"{self.nomi} ({self.raqam})"
@@ -47,8 +48,15 @@ class TableModels(models.Model):
         """Saqlashdan oldin avtomatik QR kod yaratish"""
         if not self.qr_code:  # Agar QR kod yo‘q bo‘lsa, yangisini yaratish
             self.qr_code = self.generate_qr_code()
+            self.nomi = f"{self.raqam} - stol"
         super().save(*args, **kwargs)  # Asosiy saqlash funksiyasini chaqirish
 
+
+class ChefModels(models.Model):
+    name = models.CharField(max_length=30)
+    familya = models.CharField(max_length=30)
+    mutaxasislik = models.CharField(max_length=100)
+    created_time = models.DateTimeField(auto_now_add=True)
 
 class FoodCategoryaModels(models.Model):
     name = models.CharField(max_length=25)
@@ -62,6 +70,7 @@ class FoodModels(models.Model):
     rasmi = models.ImageField(upload_to='products/')
     video = models.FileField(upload_to='products_videos/', validators=[FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov', 'mkv'])])
     category = models.ForeignKey(to=FoodCategoryaModels, on_delete=models.CASCADE)
+    oshpaz = models.ForeignKey(to=ChefModels)
     maxsulotlar = models.TextField()
     
     def __str__(self):
@@ -116,6 +125,7 @@ class KarzinkaModels(models.Model):
     narxi = models.CharField(max_length=50)
     soni = models.IntegerField()
     stol_soni = models.IntegerField()
+    oshpaz = models.ForeignKey(to=ChefModels, on_delete=models.CASCADE)
     created_time = models.DateTimeField(auto_now_add=True)
 
 
@@ -126,10 +136,6 @@ class DoimiyKarzinkaModels(models.Model):
     soni = models.IntegerField()
     stol_soni = models.IntegerField()
     created_time = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField()
-
-
-
 
 
 
