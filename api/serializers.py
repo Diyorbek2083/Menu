@@ -17,3 +17,39 @@ class RoomsSerializers(serializers.ModelSerializer):
         model = RoomModels
         fields = '__all__'
 
+
+class FoodCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FoodCategoryaModels
+        fields = '__all__'
+
+class FoodSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FoodModels
+        fields = '__all__'
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommentModel
+        fields = '__all__'
+class ReplayCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReplayCommentModels
+        fields = '__all__'
+class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LikeMolels
+        fields = '__all__'
+
+class WaiterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WaiterModels
+        fields = '__all__'
+class KarzinkaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = KarzinkaModels
+        fields = '__all__'
+
+class DoimiyKarzinkaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DoimiyKarzinkaModels
+        fields = '__all__'
