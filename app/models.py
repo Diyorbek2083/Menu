@@ -19,14 +19,12 @@ class RoomModels(models.Model):
         return self.nomi
 
 
-class TablesModels(models.Model):
+class TableModels(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published')
     )
-    
     raqam = models.BigIntegerField(unique=True)  # Stol raqami
-    nomi = models.CharField(max_length=25)  # Stol nomi
     xona = models.ForeignKey(RoomModels, on_delete=models.CASCADE)  # Xona bilan bog‘lanish
     created_time = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
@@ -50,10 +48,6 @@ class TablesModels(models.Model):
         if not self.qr_code:  # Agar QR kod yo‘q bo‘lsa, yangisini yaratish
             self.qr_code = self.generate_qr_code()
         super().save(*args, **kwargs)  # Asosiy saqlash funksiyasini chaqirish
-
-
-
-
 
 
 class FoodCategoryaModels(models.Model):
