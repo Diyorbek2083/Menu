@@ -29,7 +29,7 @@ class FoodSerializers(serializers.ModelSerializer):
         model = FoodModels
         fields = '__all__'
 
-
+###adasda
 
 
 class FoodCategorySerializer(serializers.ModelSerializer):
@@ -73,4 +73,4 @@ class DoimiyKarzinkaSerializer(serializers.ModelSerializer):
 
 
 
-        
+

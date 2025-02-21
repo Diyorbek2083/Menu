@@ -15,6 +15,7 @@ class TableView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = TableModels.objects.all()
     serializer_class = TableSerializer
+    # adasd#
 
 
 class UserView(ModelViewSet):
@@ -78,4 +79,3 @@ class DoimiyKarzinkaModelsView(ModelViewSet):
     serializer_class = DoimiyKarzinkaSerializer
 
 
-    
