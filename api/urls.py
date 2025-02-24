@@ -22,10 +22,8 @@ router.register(r'waiters', WaiterModelsView, basename='waiters')
 router.register(r'usersinfo', UserModelsView, basename='usersinfo')
 router.register(r'karzinka', KarzinkaModelsView, basename='karzinka')
 router.register(r'users', views.UserView, basename='users')
-router.register(r'rooms', views.RoomView, basename='rooms')
+router.register(r'rooms', views.RoomViews, basename='rooms')
 router.register(r'table', views.TableView, basename='table')
-
-
 router.register(r'doimiykarzinka', DoimiyKarzinkaModelsView, basename='doimiykarzinka')
 
 urlpatterns = [

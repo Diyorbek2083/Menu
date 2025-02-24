@@ -26,9 +26,10 @@ class FoodCategoryaSerializer(serializers.ModelSerializer):
     
 class FoodSerializers(serializers.ModelSerializer):
     class Meta:
-        model = FoodModels
+        model = FoodsModels
         fields = '__all__'
 
+<<<<<<< HEAD
 ###adasda
 
 
@@ -41,14 +42,20 @@ class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = FoodModels
         fields = '__all__'
+=======
+
+>>>>>>> e07d634 (yuklanish)
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommentModel
         fields = '__all__'
+
 class ReplayCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReplayCommentModels
         fields = '__all__'
+
+
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikeMolels
@@ -58,6 +65,7 @@ class WaiterSerializer(serializers.ModelSerializer):
     class Meta:
         model = WaiterModels
         fields = '__all__'
+
 class KarzinkaSerializer(serializers.ModelSerializer):
     class Meta:
         model = KarzinkaModels

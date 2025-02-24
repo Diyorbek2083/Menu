@@ -6,6 +6,7 @@ from .serializers import *
 from app.models import *
 
 
+<<<<<<< HEAD
 class RoomView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = RoomModels.objects.all()
@@ -17,6 +18,8 @@ class TableView(ModelViewSet):
     serializer_class = TableSerializer
     # adasd#
 
+=======
+>>>>>>> e07d634 (yuklanish)
 
 class UserView(ModelViewSet):
     permission_classes = [IsAdminOnly]
@@ -35,12 +38,12 @@ class TableView(ModelViewSet):
 class FoodcategoryView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = FoodCategoryaModels.objects.all()
-    serializer_class = FoodCategorySerializer
+    serializer_class = FoodCategoryaSerializer
 
 class FoodView(ModelViewSet):
     permission_classes = [IsAdminOnly]
-    queryset = FoodModels.objects.all()
-    serializer_class = FoodSerializer
+    queryset = FoodsModels.objects.all()
+    serializer_class = FoodSerializers
 class CommentView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = CommentModel.objects.all()

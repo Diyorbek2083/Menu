@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
-import qrcode
+import qrc
 from django.core.files.base import ContentFile
 from io import BytesIO
 
@@ -39,7 +39,7 @@ class TableModels(models.Model):
     def generate_qr_code(self):
         """Stol uchun QR kod yaratish"""
         data = f"Stol-{self.raqam}"  # QR kodga tushadigan matn
-        qr = qrcode.make(data)  # QR kod yaratish
+        qr = qrc.make(data)  # QR kod yaratish
         buffer = BytesIO()
         qr.save(buffer, format="PNG")  # PNG formatida saqlash
         return ContentFile(buffer.getvalue(), name=f"stol_{self.raqam}.png")
@@ -58,19 +58,20 @@ class ChefModels(models.Model):
     mutaxasislik = models.CharField(max_length=100)
     created_time = models.DateTimeField(auto_now_add=True)
 
+
 class FoodCategoryaModels(models.Model):
     name = models.CharField(max_length=25)
     slug = models.SlugField(max_length=40)
     def __str__(self):
         return self.name
 
-class FoodModels(models.Model):
+class FoodsModels(models.Model):
     nomi = models.CharField(max_length=30)
     narxi = models.BigIntegerField()
     rasmi = models.ImageField(upload_to='products/')
     video = models.FileField(upload_to='products_videos/', validators=[FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov', 'mkv'])])
     category = models.ForeignKey(to=FoodCategoryaModels, on_delete=models.CASCADE)
-    oshpaz = models.ForeignKey(to=ChefModels)
+    oshpaz = models.ForeignKey(to=ChefModels, on_delete=models.CASCADE)  # TO‘G‘RI!
     maxsulotlar = models.TextField()
     
     def __str__(self):
@@ -79,7 +80,7 @@ class FoodModels(models.Model):
 
 class CommentModel(models.Model):
     user = models.CharField(max_length=30)
-    product = models.ForeignKey(to=FoodModels, on_delete=models.CASCADE)
+    product = models.ForeignKey(to=FoodsModels, on_delete=models.CASCADE)
     izox = models.TextField()
 
     def __str__(self):
@@ -96,7 +97,7 @@ class ReplayCommentModels(models.Model):
     
 
 class LikeMolels(models.Model):
-    food = models.ForeignKey(to=FoodModels, on_delete=models.CASCADE)
+    food = models.ForeignKey(to=FoodsModels, on_delete=models.CASCADE)
     user = models.CharField(max_length=30)
     creat_time = models.DateTimeField(auto_now_add=True)
 
@@ -125,6 +126,7 @@ class KarzinkaModels(models.Model):
     narxi = models.CharField(max_length=50)
     soni = models.IntegerField()
     stol_soni = models.IntegerField()
+    coment = models.TextField()
     oshpaz = models.ForeignKey(to=ChefModels, on_delete=models.CASCADE)
     created_time = models.DateTimeField(auto_now_add=True)
 
