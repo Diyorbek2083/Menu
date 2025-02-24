@@ -29,9 +29,7 @@ class FoodSerializers(serializers.ModelSerializer):
         model = FoodsModels
         fields = '__all__'
 
-<<<<<<< HEAD
 ###adasda
-
 
 class FoodCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,11 +38,10 @@ class FoodCategorySerializer(serializers.ModelSerializer):
 
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
-        model = FoodModels
+        model = FoodsModels
         fields = '__all__'
-=======
 
->>>>>>> e07d634 (yuklanish)
+
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommentModel

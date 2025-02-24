@@ -2,7 +2,7 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.RoomModels)
-admin.site.register(models.FoodModels)
+admin.site.register(models.FoodsModels)
 admin.site.register(models.TableModels)
 admin.site.register(models.WaiterModels)
 admin.site.register(models.FoodCategoryaModels)
