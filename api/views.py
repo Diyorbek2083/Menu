@@ -17,7 +17,7 @@ class TableView(ModelViewSet):
     serializer_class = TableSerializer
     # adasd#
 
-class UserView(ModelViewSet):
+class UserViews(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = UserModels.objects.all()
     serializer_class = UserSerializer
@@ -31,6 +31,7 @@ class TableView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = TableModels.objects.all()
     serializer_class = TableSerializer
+
 class FoodcategoryView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = FoodCategoryaModels.objects.all()
@@ -40,6 +41,7 @@ class FoodView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = FoodsModels.objects.all()
     serializer_class = FoodSerializers
+
 class CommentView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = CommentModel.objects.all()
@@ -61,18 +63,12 @@ class WaiterModelsView(ModelViewSet):
     queryset = WaiterModels.objects.all()
     serializer_class = WaiterSerializer
 
-class UserModelsView(ModelViewSet): 
-    permission_classes = [IsAdminOnly]
-    queryset = UserModels.objects.all()
-    serializer_class = UserSerializer
-
 class KarzinkaModelsView(ModelViewSet):
     permission_classes = [IsAdminOnly]
     queryset = KarzinkaModels.objects.all()
     serializer_class = KarzinkaSerializer
 
 class DoimiyKarzinkaModelsView(ModelViewSet): 
-    
     permission_classes = [IsAdminOnly]
     queryset = DoimiyKarzinkaModels.objects.all()
     serializer_class = DoimiyKarzinkaSerializer
